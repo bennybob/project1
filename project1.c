@@ -7,7 +7,7 @@ int main()
 	int i, key=19;
 	
 	printf("Enter a message to encrypt: ");
-	gets(message);
+	scanf("%s", &message);
 	
 	for(i = 0; message[i] != '\0' ; ++i){
 		ch = message[i];
