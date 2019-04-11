@@ -1,40 +1,39 @@
 #include <stdio.h>
 
+
+
 int main()
 {
-   int i, x, k; //i=array pointer, x= switch case, k= encryption key 
-   char str[100];
-   
-  
-   printf("\nPlease enter a message:\t"); //insert your message
-   scanf("%[^\n]%",& str);
-   printf("please enter a key:\t");//enter encryption key
-   scanf("%d" , &k);
-
-   printf("\nPlease choose following options:\n");
-   printf("1 = Encrypt the string.\n");
-   printf("2 = Decrypt the string.\n");
-   scanf("%d", &x);
-
-   //using switch case statements
-   switch(x)
-   {
-   case 1:
-      for(i = 0; (i < 100 && str[i] != '\0'); i++)
-        str[i] = str[i] + k; //the key for encryption is added to ASCII value
-
-      printf("\nEncrypted string: %s\n", str);
-      break;
-
-   case 2:
-      for(i = 0; (i < 100 && str[i] != '\0'); i++)
-        str[i] = str[i] - k; //the key for encryption is subtracted from the ASCII value
-
-      printf("\nDecrypted string: %s\n", str);
-      break;
-
-   default:
-      printf("\nError\n");
-   }
-   return 0;
+	char message[100], ch;
+	int i, key=19;
+	
+	printf("Enter a message to encrypt: ");
+	scanf("%s",& message);
+	
+	for(i = 0; message[i] != '\0'; ++i){
+		ch = message[i];
+		
+		if(ch >= 'a' && ch <= 'z'){
+			ch = ch + key;
+			
+			if(ch > 'z'){
+				ch = ch - 'z' + 'a' - 1;
+			}
+			
+			message[i] = ch;
+		}
+		else if(ch >= 'A' && ch <= 'Z'){
+			ch = ch + key;
+			
+			if(ch > 'Z'){
+				ch = ch - 'Z' + 'A' - 1;
+			}
+			
+			message[i] = ch;
+		}
+	}
+	
+	printf("Encrypted message: %s", message);
+	
+	return 0;
 }
