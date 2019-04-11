@@ -33,7 +33,7 @@ int main()
 		}
 	}
 	
-	printf("Encrypted message: %s", message);
+	printf("Encrypted message: %s\n", message);
 	
 	return 0;
 }
