@@ -3,28 +3,23 @@
  
 int main()
 {
-	char message[100], ch;
-	int i, key=19;
+ FILE *input;
+ input = fopen("encrypted_message","r");
+ 
+ 	
 	
-	printf("Enter a message to encrypt: ");
-	scanf("%s", &message);
-	
-	for(i = 0; message[i] != '\0' ; ++i){
-		ch = message[i];
-		
-		if(ch >= 'A' && ch <= 'Z'){
-			ch = ch + key;
+ while (feof(input)==0) {
+     char ch;
+     fscanf(input,"%c",&ch);
+     
+     
+    if(ch >= 'A' && ch <= 'Z'){
+			ch = ch + 19;
 			
 			if(ch > 'Z'){
 				ch = ch - 'Z' + 'A' - 1;
-				
-			}
-			
-			message[i] = ch;
-		}
-	}
-	
-	printf("Encrypted message: %s\n", message);
-	
-	return 0;
+}
+}
+printf("%c", ch);
+}
 }
